@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iGo Transfer — Luxury Airport Transfer & Private Driver in Bali</title>
+    <meta name="description" content="iGo Transfer - Premium Airport Transfer & Private Driver Service in Bali. Book luxury cars, SUVs, and vans online. Professional drivers, 24/7 service.">
+    <meta name="keywords" content="bali transfer, airport taxi bali, private driver bali, ngurah rai airport transfer, bali car rental">
+    <meta name="author" content="iGo Transfer">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1a2d4d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="iGo Transfer">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#1a2d4d">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        :root {
+            --primary-color: #1a2d4d;
+            --secondary-color: #2d4a7a;
+            --accent-color: #25D366;
+            --text-color: #333;
+            --light-bg: #f8f9ff;
+            --white: #ffffff;
+            --success-color: #d4edda;
+            --error-color: #f8d7da;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--primary-color) 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40%, 43% {
+                transform: translateY(-8px);
+            }
+            70% {
+                transform: translateY(-4px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2.5em;
+            color: var(--white);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #e0e7ff;
+            font-weight: 500;
+        }
+
+        .booking-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px auto;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .booking-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #d1d9e6;
+            border-radius: 12px;
+            font-size: 1em;
+            font-family: 'Open Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        input:focus, select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(45, 74, 122, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .flight-number {
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Multi-Stop Styles */
+        .multi-stop {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            border: 2px solid #e8edff;
+            transition: all 0.3s ease;
+        }
+
+        .multi-stop:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .multi-stop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .add-stop-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(45, 74, 122, 0.3);
+        }
+
+        .add-stop-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 74, 122, 0.4);
+        }
+
+        .add-stop-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .stop-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            border: 1px solid #e8edff;
+            transition: all 0.3s ease;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        .stop-item:hover {
+            border-color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        .stop-number {
+            background: var(--secondary-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 600;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .stop-item:hover .stop-number {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .stop-input {
+            flex: 1;
+        }
+
+        .remove-stop-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .remove-stop-btn:hover {
+            background: #ff5252;
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        .stop-counter {
+            font-size: 0.8em;
+            color: #666;
+            text-align: center;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+        }
+
+        /* Success & Error Messages */
+        .success-message {
+            background: var(--success-color);
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid #c3e6cb;
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        .error-message {
+            background: var(--error-color);
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid #f5c6cb;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        /* Vehicle Grid */
+        .vehicle-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .vehicle-label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.95em;
+            margin-right: auto;
+            padding-top: 5px;
+        }
+
+        .vehicle-grid {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .vehicle-option {
+            width: 100px;
+            padding: 15px 8px;
+            border: 2px solid #d1d9e6;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--light-bg);
+        }
+
+        .vehicle-option:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(45, 74, 122, 0.2);
+        }
+
+        .vehicle-option.selected {
+            border-color: var(--secondary-color);
+            background: #e8edff;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(45, 74, 122, 0.3);
+        }
+
+        .vehicle-option i {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .vehicle-option.selected i {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .vehicle-name {
+            font-weight: 600;
+            font-size: 0.85em;
+            margin-bottom: 4px;
+            color: var(--primary-color);
+        }
+
+        .vehicle-capacity {
+            font-size: 0.75em;
+            color: #666;
+        }
+
+        .passengers {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .passengers input {
+            width: 90px;
+            text-align: center;
+            padding: 12px;
+        }
+
+        #estimated-price {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--light-bg), #e8edff);
+            border-radius: 15px;
+            border: 2px solid var(--secondary-color);
+            animation: pulse 3s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #estimated-price::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .book-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(45, 74, 122, 0.4);
+        }
+
+        .book-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(45, 74, 122, 0.6);
+            animation: pulse 1s infinite;
+        }
+
+        .book-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .book-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+        }
+
+        .book-btn:hover::after {
+            transform: translateX(100%);
+            transition: transform 0.6s ease;
+        }
+
+        .whatsapp-info {
+            font-size: 0.8em;
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .payment-methods h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .payment-icons i, .payment-icons span {
+            font-size: 1.8em;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .payment-icons i:hover, .payment-icons span:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: var(--primary-color);
+        }
+
+        .payment-icons span {
+            background: #e8edff;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        /* Cancellation Policy */
+        .cancellation-policy {
+            margin: 25px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .cancellation-policy h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cancellation-policy ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cancellation-policy li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            padding-left: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .cancellation-policy li:hover {
+            background: var(--light-bg);
+            padding-left: 35px;
+        }
+
+        .cancellation-policy li:before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cancellation-policy li:hover:before {
+            transform: scale(1.3);
+            color: var(--primary-color);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .badge {
+            text-align: center;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-5px);
+            color: var(--primary-color);
+        }
+
+        .badge i {
+            display: block;
+            font-size: 1.5em;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover i {
+            transform: scale(1.2);
+            animation: bounce 1s;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .stat {
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover .stat-number {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .stat-label {
+            font-size: 0.95em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Special Packages */
+        .packages-section {
+            margin: 25px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+
+        .packages-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .package {
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            border: 2px solid #e8edff;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .package:hover {
+            transform: translateY(-8px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 15px 30px rgba(45, 74, 122, 0.2);
+        }
+
+        .package-icon {
+            font-size: 2em;
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .package:hover .package-icon {
+            transform: scale(1.2) rotate(10deg);
+            color: var(--primary-color);
+        }
+
+        .package-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .package-desc {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Live Chat */
+        .live-chat {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        .chat-btn {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, var(--accent-color), #128C7E);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .chat-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+
+        .service-area {
+            margin: 30px 0 20px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            animation: fadeInUp 0.8s ease-out 1s both;
+        }
+
+        .service-area h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .area {
+            padding: 10px 8px;
+            background: var(--light-bg);
+            border-radius: 8px;
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            font-weight: 500;
+            border: 1px solid #e8edff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .area:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(45, 74, 122, 0.3);
+        }
+
+        .reviews-section {
+            margin: 35px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            animation: fadeInUp 0.8s ease-out 1.2s both;
+        }
+
+        .reviews-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .review-item {
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .review-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border-left-color: var(--primary-color);
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .faq-section {
+            margin: 35px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            animation: fadeInUp 0.8s ease-out 1.4s both;
+        }
+
+        .faq-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--secondary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .faq-answer {
+            color: #555;
+            margin-top: 12px;
+            display: none;
+            line-height: 1.6;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .emergency-contact {
+            margin: 25px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #ff6b6b;
+            animation: fadeInUp 0.8s ease-out 1.6s both;
+        }
+
+        .emergency-contact h4 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #e0e7ff;
+            margin-top: 40px;
+            animation: fadeIn 1s ease-out 1.8s both;
+        }
+
+        /* Install Prompt */
+        .install-prompt {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            background: var(--white);
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 1001;
+            animation: slideInRight 0.6s ease-out;
+            border: 2px solid var(--secondary-color);
+            max-width: 300px;
+        }
+
+        .install-prompt.hidden {
+            display: none;
+        }
+
+        .install-prompt p {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .install-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .install-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .dismiss-btn {
+            background: transparent;
+            color: #666;
+            border: 1px solid #ccc;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dismiss-btn:hover {
+            background: #f0f0f0;
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 45, 77, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2em; }
+            .vehicle-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .vehicle-label {
+                margin-right: 0;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+            .vehicle-grid {
+                justify-content: center;
+            }
+            .vehicle-option {
+                width: 90px;
+            }
+            .areas-grid { grid-template-columns: repeat(3, 1fr); }
+            .trust-badges { flex-direction: column; gap: 15px; }
+            .stats-section { flex-direction: column; gap: 20px; }
+            .packages-grid { grid-template-columns: 1fr; }
+            .payment-icons { gap: 12px; }
+            .payment-icons i, .payment-icons span { font-size: 1.5em; }
+            .stop-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .stop-input {
+                width: 100%;
+            }
+            .install-prompt {
+                left: 15px;
+                right: 15px;
+                bottom: 90px;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vehicle-option {
+                width: 80px;
+                padding: 12px 5px;
+            }
+            .vehicle-option i {
+                font-size: 1.3em;
+            }
+            .vehicle-name {
+                font-size: 0.8em;
+            }
+            .vehicle-capacity {
+                font-size: 0.7em;
+            }
+            .areas-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .booking-card {
+                padding: 20px;
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Install Prompt -->
+    <div class="install-prompt hidden" id="installPrompt">
+        <p>Install iGo Transfer App?</p>
+        <button class="install-btn" id="installButton">Install</button>
+        <button class="dismiss-btn" id="dismissButton">Not Now</button>
+    </div>
+
+    <div class="container">
+        <header class="animate-fade-in-up">
+            <h1>iGo Transfer</h1>
+            <p class="subtitle">Light Luxury Quick Booking in Bali</p>
+        </header>
+
+        <main>
+            <div class="booking-card animate-fade-in-up">
+                <form id="bookingForm">
+                    <div id="form-messages"></div>
+                    
+                    <div class="form-group">
+                        <label for="pickup">📍 Pickup Location</label>
+                        <input type="text" id="pickup" placeholder="Example: Airport, Hotel in Kuta" required>
+                        
+                        <div class="flight-number" id="flightNumberGroup">
+                            <label for="flightNumber">✈️ Flight Number (Optional)</label>
+                            <input type="text" id="flightNumber" placeholder="Example: GA 412">
+                        </div>
+                    </div>
+                    
+                    <!-- Multi-Stop Feature -->
+                    <div class="multi-stop">
+                        <div class="multi-stop-header">
+                            <label>➕ Multiple Stops (Optional)</label>
+                            <button type="button" class="add-stop-btn" id="addStopBtn">
+                                + Add Stop
+                            </button>
+                        </div>
+                        <div id="additional-stops"></div>
+                        <div class="stop-counter" id="stopCounter">No additional stops added</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="destination">🎯 Final Destination</label>
+                        <input type="text" id="destination" placeholder="Example: Nusa Dua, Ubud, Canggu" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="datetime">📅 Date & Time</label>
+                        <input type="datetime-local" id="datetime" required>
+                    </div>
+
+                    <!-- Vehicle Type -->
+                    <div class="form-group">
+                        <div class="vehicle-container">
+                            <div class="vehicle-label">🚗 Vehicle Type</div>
+                            <div class="vehicle-grid">
+                                <div class="vehicle-option selected" data-type="standard">
+                                    <i class="fas fa-car"></i>
+                                    <div class="vehicle-name">Standard</div>
+                                    <div class="vehicle-capacity">4pax</div>
+                                </div>
+                                <div class="vehicle-option" data-type="premium">
+                                    <i class="fas fa-car-side"></i>
+                                    <div class="vehicle-name">Premium</div>
+                                    <div class="vehicle-capacity">4pax</div>
+                                </div>
+                                <div class="vehicle-option" data-type="van">
+                                    <i class="fas fa-van-shuttle"></i>
+                                    <div class="vehicle-name">Van</div>
+                                    <div class="vehicle-capacity">8pax</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passengers">👥 Number of Passengers</label>
+                        <div class="passengers">
+                            <input type="number" id="passengers" min="1" max="20" value="1" required>
+                            <span>person(s)</span>
+                        </div>
+                    </div>
+                    
+                    <div id="estimated-price">Estimated Price: Please fill locations first!</div>
+
+                    <!-- WhatsApp Button -->
+                    <button type="submit" class="book-btn">
+                        📱 Book via WhatsApp
+                    </button>
+                    <div class="whatsapp-info">Click to open WhatsApp with your booking details</div>
+
+                    <!-- Statistics -->
+                    <div class="stats-section">
+                        <div class="stat">
+                            <div class="stat-number">5,000+</div>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">On-time Rate</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Service</div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="payment-methods">
+                        <h4>💳 Payment Methods</h4>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                            <span>Cash</span>
+                            <span>Bank Transfer</span>
+                        </div>
+                    </div>
+
+                    <!-- Cancellation Policy -->
+                    <div class="cancellation-policy">
+                        <h4>📝 Cancellation Policy</h4>
+                        <ul>
+                            <li>Free cancellation up to 24 hours before pickup</li>
+                            <li>50% charge for cancellations within 24 hours</li>
+                            <li>No-show: 100% charge</li>
+                        </ul>
+                    </div>
+
+                    <div class="trust-badges">
+                        <div class="badge">
+                            <i class="fas fa-clock"></i>
+                            <div>24/7 Support</div>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>Professional</div>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-car"></i>
+                            <div>Luxury Fleet</div>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-star"></i>
+                            <div>5-Star Rated</div>
+                        </div>
+                    </div>
+
+                    <div class="service-area">
+                        <h3>🛣️ Our Service Areas - All Over Bali</h3>
+                        <div class="areas-grid">
+                            <div class="area">Kuta</div>
+                            <div class="area">Seminyak</div>
+                            <div class="area">Canggu</div>
+                            <div class="area">Ubud</div>
+                            <div class="area">Nusa Dua</div>
+                            <div class="area">Sanur</div>
+                            <div class="area">Jimbaran</div>
+                            <div class="area">Uluwatu</div>
+                            <div class="area">Denpasar</div>
+                            <div class="area">Legian</div>
+                            <div class="area">Kerobokan</div>
+                            <div class="area">Tabanan</div>
+                            <div class="area">Gianyar</div>
+                            <div class="area">Klungkung</div>
+                            <div class="area">Bangli</div>
+                            <div class="area">Karangasem</div>
+                            <div class="area">Singaraja</div>
+                            <div class="area">Lovina</div>
+                            <div class="area">Amed</div>
+                            <div class="area">Candidasa</div>
+                            <div class="area">Padang Bai</div>
+                            <div class="area">Nusa Penida</div>
+                            <div class="area">Nusa Lembongan</div>
+                            <div class="area">Menjangan</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="reviews-section">
+                <h2>⭐ Customer Reviews & Testimonials</h2>
+                <div class="reviews-grid">
+                    <div class="review-item">
+                        <div class="stars">★★★★★</div>
+                        <div class="review-text">"Excellent service! The driver was very professional and arrived exactly on time. The car was clean and comfortable. Highly recommended!"</div>
+                        <div class="review-meta">
+                            <div class="reviewer-name">Sarah Johnson</div>
+                            <div class="review-location">Kuta → Ubud</div>
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="stars">★★★★★</div>
+                        <div class="review-text">"Smooth transfer from airport to Nusa Dua. Competitive pricing and best service! Driver was very helpful with our luggage."</div>
+                        <div class="review-meta">
+                            <div class="reviewer-name">Thomas Lee</div>
+                            <div class="review-location">Airport → Nusa Dua</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="stars">★★★★★</div>
+                        <div class="review-text">"Used the multi-stop feature to visit three different hotels. Very convenient and the driver was extremely patient. Great value!"</div>
+                        <div class="review-meta">
+                            <div class="reviewer-name">Michael Chen</div>
+                            <div class="review-location">Airport → Multiple Stops</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>❓ Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does it take to get a response after booking?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">We respond within 5-15 minutes via WhatsApp during our operational hours from 06:00 - 24:00</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are all fees included in the price?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Yes, the price includes parking fees, tolls, and driver costs. Tips are not included but appreciated</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What payment methods do you accept?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">We accept cash, credit cards (Visa, Mastercard), PayPal, and bank transfers</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does the multi-stop feature work?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">You can add up to 5 additional stops between your pickup and final destination. Each stop adds 15% to the base price. Perfect for hotel pickups, shopping, or multiple drop-offs.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you provide child seats?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Yes, we provide child seats upon request. Please mention this in your booking notes</div>
+                </div>
+            </div>
+
+            <div class="emergency-contact">
+                <h4>🆘 Emergency Contact</h4>
+                <p>WhatsApp: +62 819 3316 5530 (24/7)</p>
+                <p>Email: support@igotransfer.com</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 iGo Transfer | Designed with ❤️ by Ogi Bali</p>
+        </footer>
+    </div>
+
+    <!-- Live Chat Button -->
+    <div class="live-chat">
+        <button class="chat-btn" onclick="openWhatsAppChat()">
+            💬 Live Chat
+        </button>
+    </div>
+
+    <script>
+        // ===============================
+        // PWA FUNCTIONALITY
+        // ===============================
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+
+        // Install Prompt
+        let deferredPrompt;
+        const installPrompt = document.getElementById('installPrompt');
+        const installButton = document.getElementById('installButton');
+        const dismissButton = document.getElementById('dismissButton');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installPrompt.classList.remove('hidden');
+            
+            // Show prompt after 5 seconds
+            setTimeout(() => {
+                installPrompt.style.display = 'block';
+            }, 5000);
+        });
+
+        installButton.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                }
+                deferredPrompt = null;
+                installPrompt.classList.add('hidden');
+            }
+        });
+
+        dismissButton.addEventListener('click', () => {
+            installPrompt.classList.add('hidden');
+            // Don't show again for 30 days
+            localStorage.setItem('installPromptDismissed', Date.now());
+        });
+
+        // Check if prompt was recently dismissed
+        const lastDismissed = localStorage.getItem('installPromptDismissed');
+        if (lastDismissed && (Date.now() - lastDismissed) < 30 * 24 * 60 * 60 * 1000) {
+            installPrompt.style.display = 'none';
+        }
+
+        // ===============================
+        // ANIMATIONS AND ENHANCEMENTS
+        // ===============================
+
+        // Loading animation
+        window.addEventListener('load', function() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-slide-in-left, .animate-slide-in-right');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Enhanced hover effects
+        function addHoverEffects() {
+            const cards = document.querySelectorAll('.booking-card, .package, .review-item');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        }
+
+        // ===============================
+        // MULTI-STOP FEATURE
+        // ===============================
+
+        const priceData = {
+            'kuta': 8.82,
+            'legian': 11.76,
+            'seminyak': 14.71,
+            'canggu': 20.59,
+            'jimbaran': 11.76,
+            'uluwatu': 20.59,
+            'nusa dua': 14.71,
+            'sanur': 14.71,
+            'denpasar': 14.71,
+            'ubud': 20.59,
+            'lovina': 41.18,
+            'amed': 38.24,
+            'candidasa': 32.35
+        };
+
+        const vehicleMultipliers = { 
+            standard: 1, 
+            premium: 1.5, 
+            van: 2 
+        };
+
+        const vehicleCapacities = {
+            standard: 4,
+            premium: 4,
+            van: 8
+        };
+
+        let selectedVehicle = 'standard';
+        let stopCount = 0;
+        const MAX_STOPS = 5;
+
+        // Multi-Stop Functions
+        function addStop() {
+            if (stopCount >= MAX_STOPS) {
+                showMessage(`Maximum ${MAX_STOPS} stops allowed`, 'error');
+                return;
+            }
+
+            stopCount++;
+            const stopsContainer = document.getElementById('additional-stops');
+            
+            const stopItem = document.createElement('div');
+            stopItem.className = 'stop-item';
+            stopItem.style.animation = 'slideInRight 0.5s ease-out';
+            stopItem.innerHTML = `
+                <div class="stop-number">${stopCount}</div>
+                <input type="text" class="stop-input" placeholder="Stop location (e.g., Hotel, Restaurant, Shop)" data-stop="${stopCount}">
+                <button type="button" class="remove-stop-btn" onclick="removeStop(this)" title="Remove stop">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            stopsContainer.appendChild(stopItem);
+            updateStopCounter();
+            updateAddButtonState();
+            
+            // Add event listener for the new stop input
+            const stopInput = stopItem.querySelector('.stop-input');
+            stopInput.addEventListener('input', calculatePrice);
+            
+            showMessage(`Stop ${stopCount} added`, 'success');
+        }
+
+        function removeStop(button) {
+            const stopItem = button.closest('.stop-item');
+            const stopNumber = parseInt(stopItem.querySelector('.stop-number').textContent);
+            
+            // Add removal animation
+            stopItem.style.animation = 'slideInRight 0.5s ease-out reverse';
+            setTimeout(() => {
+                stopItem.remove();
+                stopCount--;
+                
+                // Re-number remaining stops
+                const remainingStops = document.querySelectorAll('.stop-item');
+                remainingStops.forEach((stop, index) => {
+                    const stopNum = index + 1;
+                    stop.querySelector('.stop-number').textContent = stopNum;
+                    stop.querySelector('.stop-input').setAttribute('data-stop', stopNum);
+                    stop.style.animation = 'slideInRight 0.3s ease-out';
+                });
+                
+                updateStopCounter();
+                updateAddButtonState();
+                calculatePrice();
+                
+                showMessage(`Stop ${stopNumber} removed`, 'success');
+            }, 300);
+        }
+
+        function updateStopCounter() {
+            const counter = document.getElementById('stopCounter');
+            if (stopCount === 0) {
+                counter.textContent = 'No additional stops added';
+                counter.style.color = '#666';
+            } else if (stopCount === 1) {
+                counter.textContent = '1 additional stop added';
+                counter.style.color = 'var(--secondary-color)';
+            } else {
+                counter.textContent = `${stopCount} additional stops added`;
+                counter.style.color = 'var(--secondary-color)';
+            }
+        }
+
+        function updateAddButtonState() {
+            const addButton = document.getElementById('addStopBtn');
+            if (stopCount >= MAX_STOPS) {
+                addButton.disabled = true;
+                addButton.textContent = 'Max stops reached';
+                addButton.style.animation = 'pulse 2s infinite';
+            } else {
+                addButton.disabled = false;
+                addButton.textContent = '+ Add Stop';
+                addButton.style.animation = 'none';
+            }
+        }
+
+        function getStopLocations() {
+            const stops = [];
+            const stopInputs = document.querySelectorAll('.stop-input');
+            
+            stopInputs.forEach(input => {
+                if (input.value.trim()) {
+                    stops.push(input.value.trim());
+                }
+            });
+            
+            return stops;
+        }
+
+        // Enhanced Price Calculation with Multi-Stop
+        function calculatePrice() {
+            const destination = document.getElementById('destination').value.toLowerCase().trim();
+            const passengers = parseInt(document.getElementById('passengers').value) || 1;
+            const stops = getStopLocations();
+
+            // Reset price if no destination
+            if (!destination) {
+                document.getElementById('estimated-price').textContent = "Estimated Price: Please fill locations first!";
+                return;
+            }
+
+            // Find base price
+            let basePrice = null;
+            for (const [location, price] of Object.entries(priceData)) {
+                if (destination.includes(location)) {
+                    basePrice = price;
+                    break;
+                }
+            }
+
+            // Show confirmation message if location not found
+            if (!basePrice) {
+                document.getElementById('estimated-price').textContent = "Estimated Price: We'll confirm via WhatsApp 😊";
+                return;
+            }
+
+            // Calculate additional cost for stops
+            let additionalCost = 0;
+            if (stops.length > 0) {
+                // Add 15% of base price for each stop
+                additionalCost = basePrice * 0.15 * stops.length;
+            }
+
+            // Calculate final price
+            const totalEUR = (basePrice + additionalCost) * vehicleMultipliers[selectedVehicle] * Math.ceil(passengers / vehicleCapacities[selectedVehicle]);
+            
+            let priceText = `Estimated Price: €${totalEUR.toFixed(2)}`;
+            if (stops.length > 0) {
+                priceText += ` (includes ${stops.length} stop${stops.length > 1 ? 's' : ''})`;
+            }
+            
+            const priceElement = document.getElementById('estimated-price');
+            priceElement.textContent = priceText;
+            
+            // Add price update animation
+            priceElement.style.animation = 'none';
+            setTimeout(() => {
+                priceElement.style.animation = 'pulse 1s ease-in-out';
+            }, 10);
+        }
+
+        // Other Core Functions
+        function initializeVehicleSelection() {
+            const vehicleOptions = document.querySelectorAll('.vehicle-option');
+            
+            vehicleOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    vehicleOptions.forEach(opt => {
+                        opt.classList.remove('selected');
+                        opt.style.animation = 'none';
+                    });
+                    this.classList.add('selected');
+                    this.style.animation = 'bounce 0.6s ease-out';
+                    selectedVehicle = this.getAttribute('data-type');
+                    calculatePrice();
+                });
+            });
+        }
+
+        function initializeAirportDetection() {
+            const pickupInput = document.getElementById('pickup');
+            const flightGroup = document.getElementById('flightNumberGroup');
+
+            pickupInput.addEventListener('input', function() {
+                const value = this.value.toLowerCase();
+                if (value.includes('airport') || value.includes('dps') || value.includes('ngurah')) {
+                    flightGroup.style.display = 'block';
+                    flightGroup.style.animation = 'fadeInUp 0.5s ease-out';
+                } else {
+                    flightGroup.style.display = 'none';
+                }
+            });
+        }
+
+        function initializeFAQ() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const wasActive = faqItem.classList.contains('active');
+                    
+                    // Close all FAQ items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!wasActive) {
+                        faqItem.classList.add('active');
+                        this.querySelector('i').style.transform = 'rotate(180deg)';
+                    } else {
+                        this.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        }
+
+        function validateForm() {
+            const pickup = document.getElementById('pickup').value.trim();
+            const destination = document.getElementById('destination').value.trim();
+            const datetime = document.getElementById('datetime').value;
+            const passengers = parseInt(document.getElementById('passengers').value);
+
+            if (!pickup || !destination) {
+                showMessage('Please fill in both pickup location and destination', 'error');
+                return false;
+            }
+
+            if (!datetime) {
+                showMessage('Please select date and time', 'error');
+                return false;
+            }
+
+            const selectedDatetime = new Date(datetime);
+            const now = new Date();
+            
+            if (selectedDatetime < now) {
+                showMessage('Please select a future date and time', 'error');
+                return false;
+            }
+            
+            const vehicleCapacity = vehicleCapacities[selectedVehicle];
+            
+            if (passengers > vehicleCapacity) {
+                showMessage(`Selected vehicle can only accommodate ${vehicleCapacity} passengers`, 'error');
+                return false;
+            }
+
+            if (passengers < 1) {
+                showMessage('Please enter at least 1 passenger', 'error');
+                return false;
+            }
+            
+            return true;
+        }
+
+        function openWhatsAppChat() {
+            const message = "Hello iGo Transfer! I have a question about your services.";
+            const whatsappUrl = `https://wa.me/6281933165530?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function showMessage(message, type) {
+            const messagesContainer = document.getElementById('form-messages');
+            messagesContainer.innerHTML = '';
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = type === 'success' ? 'success-message' : 'error-message';
+            messageDiv.textContent = message;
+            messagesContainer.appendChild(messageDiv);
+
+            // Auto-remove with fade out
+            setTimeout(() => {
+                messageDiv.style.opacity = '0';
+                messageDiv.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    if (messageDiv.parentElement) {
+                        messageDiv.remove();
+                    }
+                }, 500);
+            }, 4000);
+        }
+
+        function initializeFormSubmission() {
+            const form = document.getElementById('bookingForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (!validateForm()) {
+                    return;
+                }
+
+                // Get form values
+                const pickup = document.getElementById('pickup').value;
+                const destination = document.getElementById('destination').value;
+                const datetime = document.getElementById('datetime').value;
+                const passengers = document.getElementById('passengers').value;
+                const flightNumber = document.getElementById('flightNumber').value;
+                const price = document.getElementById('estimated-price').textContent;
+                const stops = getStopLocations();
+
+                // Vehicle names mapping
+                const vehicleNames = {
+                    'standard': 'Standard Car (4 passengers)',
+                    'premium': 'Premium Car (4 passengers)', 
+                    'van': 'Van (8 passengers)'
+                };
+
+                // Build WhatsApp message
+                let message = `Hello iGo Transfer! I want to book a transfer:
+
+📍 Pickup: ${pickup}`;
+
+                // Add stops to message
+                if (stops.length > 0) {
+                    message += `\n\n🛑 Additional Stops:`;
+                    stops.forEach((stop, index) => {
+                        message += `\n${index + 1}. ${stop}`;
+                    });
+                }
+
+                message += `\n\n🎯 Final Destination: ${destination}
+📅 Date/Time: ${new Date(datetime).toLocaleString()}
+🚗 Vehicle: ${vehicleNames[selectedVehicle]}
+👥 Passengers: ${passengers}`;
+
+                if (flightNumber) {
+                    message += `\n✈️ Flight Number: ${flightNumber}`;
+                }
+
+                message += `\n💶 ${price}
+
+Please confirm availability and final price. Thank you!`;
+
+                // Open WhatsApp
+                const whatsappUrl = `https://wa.me/6281933165530?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+                
+                showMessage('Booking form submitted successfully! WhatsApp will open with your booking details.', 'success');
+                
+                // Add success animation to form
+                const bookingCard = document.querySelector('.booking-card');
+                bookingCard.style.animation = 'pulse 1s ease-in-out';
+                setTimeout(() => {
+                    bookingCard.style.animation = '';
+                }, 1000);
+            });
+        }
+
+        // Initialize Multi-Stop Feature
+        function initializeMultiStop() {
+            const addButton = document.getElementById('addStopBtn');
+            addButton.addEventListener('click', addStop);
+        }
+
+        // Main Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('iGo Transfer PWA - Initializing application');
+            
+            // Set minimum datetime to current time
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            document.getElementById('datetime').min = now.toISOString().slice(0, 16);
+
+            // Set default datetime to 2 hours from now
+            const defaultTime = new Date(now.getTime() + 2 * 60 * 60 * 1000);
+            document.getElementById('datetime').value = defaultTime.toISOString().slice(0, 16);
+
+            // Initialize all functions
+            initializeVehicleSelection();
+            initializeFAQ();
+            initializeAirportDetection();
+            initializeFormSubmission();
+            initializeMultiStop();
+            addHoverEffects();
+
+            // Add event listeners
+            document.getElementById('destination').addEventListener('input', calculatePrice);
+            document.getElementById('passengers').addEventListener('input', calculatePrice);
+            
+            // Initialize price calculation
+            calculatePrice();
+            
+            console.log('iGo Transfer PWA - Application initialized successfully');
+        });
+
+        // Offline functionality
+        window.addEventListener('online', function() {
+            showMessage('Connection restored', 'success');
+        });
+
+        window.addEventListener('offline', function() {
+            showMessage('You are currently offline. Some features may not work.', 'error');
+        });
+
+    </script>
+</body>
+</html>
